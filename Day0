@@ -1,0 +1,21 @@
+** Power
+% Mod
+
+Operator
+Constant
+Variables
+
+
+
+Function: type() tells which type of variable or constant (int, str, float)
+
+>>>print(float(10) + 100)
+100.0
+>>>i=44
+>>>type(i)
+<class'int'>
+>>>f=float(i)
+>>>print(f)
+44.0
+>>>type(f)
+<class'float'>
