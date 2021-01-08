@@ -1,0 +1,113 @@
+Data Storytelling => org decision making 
+Data showcasing => analyst, engineers, mathematicians, scientists :Area charts, bar, line, cloropleths, point maps, histograms, scatter plots, scatter plot matrices, raster maps
+Data art => general public : Line, Graph networks, cloropleths, something art..
+
+AI driven color match tool - Colormind.io
+
+#Standard Data Graphics:
+Line chart -> change in value of attributes w.r.t x-axis variable, visually compare values of related attributes
+Bar chart -> data attribute values within data category, obs counts within category
+Pie chart -> whole set of categorial data is complete cirle with proportions of different categories as slices
+
+Functional method.
+Libraries: Matplotlib, Seaborn
+
+
+
+import numpy as np
+from numpy.random import randn
+import pandas as pd
+from pandas import Series, DataFrame
+import matplotlib.pyplot as plt
+from matplotlib import rcParams
+
+
+#Creating a line chart from a list object
+#Plotting a line chart in matplotlib
+x = range(1,10)
+y = [1,2,3,4,0,4,3,2,1]
+plt.plot(x,y)
+#Plotting a line chart from a Pandas object
+address = 'C:/Users/monic/Desktop/Ex_Files_Python_Data_Science_EssT_Pt_1/Data/mtcars.csv'
+cars = pd.read_csv(address)
+cars.columns = ['car_names', 'mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am', 'gear', 'carb']
+mpg=cars['mpg']
+
+mpg.plot()
+
+df=cars[['cyl', 'wt', 'mpg']]
+df.plot()
+
+
+#Creating bar charts
+#Creating bar chart from a list
+plt.bar(x,y)
+#Creating bar chart from Pandas objects
+mpg.plot(kind="bar")
+#Creating bar chart from Pandas objects
+mpg.plot(kind="barh") #Horizontally
+
+
+#Creating a pie chart
+x=[1,2,3,4,0.5]
+plt.pie(x)
+plt.show
+#Saving a plot
+plt.pie(x)
+plt.savefig('piechart.png')
+plt.show
+#To see where it is saved
+%pwd
+
+
+
+
+
+#Defining elements of a plot
+#object oriented plotting - blank and then populating with plots and its elements
+
+import numpy as np
+from numpy.random import randn
+import pandas as pd
+from pandas import Series, DataFrame
+import matplotlib.pyplot as plt
+from matplotlib import rcParams
+
+%matplotlib inline
+rcParams[]
+
+#Defining axes, ticks and grids
+#Axes
+x=range(1,10)
+y=[1,2,3,4,0,4,3,2,1]
+fig=plt.figure()
+ax=fig.add_axes([0.1,0.1,1,1])
+ax.plot(x,y)
+#Limit and Ticks
+fig=plt.figure()
+ax=fig.add_axes([0.1,0.1,1,1])
+
+ax.set_xlim([1,9])
+ax.set_ylim([0,5])
+
+ax.set_xticks([0,1,2,4,5,6,8,9,10])
+ax.set_yticks([0,1,2,3,4,5])
+
+ax.plot(x,y)
+
+#Grids
+fig=plt.figure()
+ax=fig.add_axes([0.1,0.1,1,1])
+
+ax.set_xlim([1,9])
+ax.set_ylim([0,5])
+ax.grid()
+ax.plot(x,y)
+
+
+#Generating multiple plots in one figure with subplots
+fig=plt.figure()
+fig, (ax1,ax2)=plt.subplots(1,2)
+
+ax1.plot(x)
+ax2.plot(x,y)
