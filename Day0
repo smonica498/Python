@@ -1,7 +1,7 @@
 ** Power
 % Mod
 
-Operator
+Operator 
 Constant
 Variables
 
@@ -19,3 +19,196 @@ Function: type() tells which type of variable or constant (int, str, float)
 44.0
 >>>type(f)
 <class'float'>
+
+
+String Conversions:
+>>>s='122'
+>>>type(s)
+<class'str'>
+>>>i=int(s)
+>>>type(i)
+<class'int'>
+>>>print(i+1)
+123
+
+
+Input Function: input()
+>>n=input('What is your name?')
+>>print('Welcome', n)
+What is you name?
+>>>M
+Welcome M
+
+
+Conditional Statements: if
+x=4
+if x<10:
+ print('Small number')
+if x>20:
+ print('Big number')
+ 
+Conditional Statements: if else (2 way decision)
+x=4
+if x<10:
+ print('Small number')
+else:
+ print('Big number')
+ 
+Conditional Statements: elif (Multi-way if)
+x=0
+if x<3:
+  print('Small number')
+elif x<10:
+  print('Medium number')
+else:
+  print('Large number')
+  
+#No else
+x=0
+if x<3:
+  print('Small number')
+elif x<10:
+  print('Medium number')
+  
+  
+Try/except:(For traceback error)
+a='Hello World'
+try:
+ i=int(a)
+except:
+ i=-1
+print('First' , i) #First -1
+
+
+Functions: def
+def function1()
+ print('Hello World')
+
+function1()
+
+
+Building own functions:
+def day_weekend_number(d):
+ if d=='Saturday':
+  print('Day0')
+ elif d=='Sunday':
+  print('Day1')
+ else:
+  print('It is a weekday or something else and not weekend')
+
+day_weekend_number('Saturday') #Day0
+
+
+Return values:
+def say_hello():
+ return "Hello"
+print(say_hello(), "World") #Hello World
+
+def day_weekend_number(d):
+ if d=='Saturday':
+  return 'Day0'
+ elif d=='Sunday':
+  return 'Day1'
+ else:
+  return 'It is a weekday or something else and not weekend'
+print(day_weekend_number('Saturday'), "it is") #Day0 it is
+day_weekend_number('Sunday') #'Day1'
+
+
+Loops and iterations: while (Repeated loop, infinite loop)
+n=4
+while n>0:
+ print(n)
+ n=n-1
+print('Done!')
+print(n)
+
+
+Break statemnet:to get out of the loop
+while True:
+ l=input('> ')
+ if l=='done':
+  break
+ print(l)
+print('Done!')
+
+
+Continue: to finish an iteration (top of loop)
+while True:
+ l=input('> ')
+ if l=='#':
+  continue
+ if l=='done':
+  break
+ print(l)
+print('Done!')
+ 
+
+Definite loops: for
+for i in [4,3,2,1]:
+ print(i)
+print('Done!')
+
+names=['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thurs', 'Fri']
+for name in names:
+ print('Days name:', name)
+print('Done!')
+
+#Find the largest number
+num=[3,41,12,9,74,15]
+x=0
+for n in num:
+    print(n)
+    if n>x:
+        x=n
+print('The largest number is:', x)
+
+#Counting in a loop
+num=[10,11,8,7,6,5,4,3,2,1,0]
+count=0
+for n in num:
+ count=count+1
+ print(count, n)
+print('Total count is:' , count)
+
+#Total up a series of values
+num=[10,11,8,7,6,5,4,3,2,1,0]
+t=0
+for n in num:
+ t=n+t
+ print('With', n, 'total till now is:', t)
+print('Total is:' , t)
+
+#Find average in a loop
+num=[10,11,8,7,6,5,4,3,2,1,0]
+t=0
+d=0
+for n in num:
+ d=d+1
+ t=(n+t)/d
+print('Average is:' , t)
+
+#Search using a boolean variable
+found=False
+for n in [10,11,8,7,6,5,4,3,2,1,0]:
+ if n==3:
+  found=True
+  break
+ print(n,found)
+
+#Find the smallest value in the list
+num=[41,12,9,74,15,3]
+x=None
+for n in num:
+    if x is None:
+        x=n
+    elif n<x:
+        x=n
+    print('with',n, 'now, smallest value till now is', x)
+print('The smallest number is:', x)
+
+
+
+
+
+
