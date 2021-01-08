@@ -1,0 +1,138 @@
+Day 1: Treating missing values
+
+
+import numpy as np
+import pandas as pd
+
+from pandas import Series, DataFrame
+
+#Finding missing values
+missing = np.nan #Not a number
+
+series_obj = Series(['row1', 'row2', missing, 'row4', 'row5', 'row6', missing, 'row8'])
+series_obj
+Output:
+0    row1
+1    row2
+2     NaN
+3    row4
+4    row5
+5    row6
+6     NaN
+7    row8
+dtype: object
+
+series_obj.isnull() 
+Output:
+0    False
+1    False
+2     True
+3    False
+4    False
+5    False
+6     True
+7    False
+dtype: bool
+
+
+#Filling in for missing values
+np.random.seed(25)
+DF_obj = DataFrame(np.random.rand(36).reshape(6,6))
+DF_obj
+Output:
+	0	        1	        2	        3	        4	        5
+0	0.870124	0.582277	0.278839	0.185911	0.411100	0.117376
+1	0.684969	0.437611	0.556229	0.367080	0.402366	0.113041
+2	0.447031	0.585445	0.161985	0.520719	0.326051	0.699186
+3	0.366395	0.836375	0.481343	0.516502	0.383048	0.997541
+4	0.514244	0.559053	0.034450	0.719930	0.421004	0.436935
+5	0.281701	0.900274	0.669612	0.456069	0.289804	0.525819
+
+DF_obj.loc[3:5, 0] = missing
+DF_obj.loc[1:4, 5] = missing
+DF_obj
+Output:
+	0	        1	        2	        3	        4	        5
+0	0.870124	0.582277	0.278839	0.185911	0.411100	0.117376
+1	0.684969	0.437611	0.556229	0.367080	0.402366	NaN
+2	0.447031	0.585445	0.161985	0.520719	0.326051	NaN
+3	NaN	      0.836375	0.481343	0.516502	0.383048	NaN
+4	NaN	      0.559053	0.034450	0.719930	0.421004	NaN
+5	NaN	      0.900274	0.669612	0.456069	0.289804	0.525819
+
+DF_filled = DF_obj.fillna(0) #Missing values filled with 0
+DF_filled
+Output:
+  0	        1	        2	        3	        4	        5
+0	0.870124	0.582277	0.278839	0.185911	0.411100	0.117376
+1	0.684969	0.437611	0.556229	0.367080	0.402366	0.000000
+2	0.447031	0.585445	0.161985	0.520719	0.326051	0.000000
+3	0.000000	0.836375	0.481343	0.516502	0.383048	0.000000
+4	0.000000	0.559053	0.034450	0.719930	0.421004	0.000000
+5	0.000000	0.900274	0.669612	0.456069	0.289804	0.525819
+
+DF_filled = DF_obj.fillna({0: 0.1, 5: 1.25}) #Dictionary. Column 0 Missing values filled with 0.1 and column 5 with 1.25 
+DF_filled
+Output:
+  0	        1	        2	        3	        4	        5
+0	0.870124	0.582277	0.278839	0.185911	0.411100	0.117376
+1	0.684969	0.437611	0.556229	0.367080	0.402366	1.250000
+2	0.447031	0.585445	0.161985	0.520719	0.326051	1.250000
+3	0.100000	0.836375	0.481343	0.516502	0.383048	1.250000
+4	0.100000	0.559053	0.034450	0.719930	0.421004	1.250000
+5	0.100000	0.900274	0.669612	0.456069	0.289804	0.525819
+
+DF_fill = DF_obj.fillna(method='ffill') #Missing values filled with prev values of the columns
+DF_fill
+	0	        1	        2	        3	        4	        5
+0	0.870124	0.582277	0.278839	0.185911	0.411100	0.117376
+1	0.684969	0.437611	0.556229	0.367080	0.402366	0.117376
+2	0.447031	0.585445	0.161985	0.520719	0.326051	0.117376
+3	0.447031	0.836375	0.481343	0.516502	0.383048	0.117376
+4	0.447031	0.559053	0.034450	0.719930	0.421004	0.117376
+5	0.447031	0.900274	0.669612	0.456069	0.289804	0.525819
+
+
+#Counting Missing Values
+np.random.seed(25)
+DF_obj = DataFrame(np.random.rand(36).reshape(6,6))
+DF_obj.loc[3:5, 0] = missing
+DF_obj.loc[1:4, 5] = missing
+DF_obj
+Output:
+	0	        1	        2	        3	        4	        5
+0	0.870124	0.582277	0.278839	0.185911	0.411100	0.117376
+1	0.684969	0.437611	0.556229	0.367080	0.402366	NaN
+2	0.447031	0.585445	0.161985	0.520719	0.326051	NaN
+3	NaN	      0.836375	0.481343	0.516502	0.383048	NaN
+4	NaN	      0.559053	0.034450	0.719930	0.421004	NaN
+5	NaN	      0.900274	0.669612	0.456069	0.289804	0.525819
+
+DF_obj.isnull().sum() #Gives the count of missing value at each columns
+Output:
+0    3
+1    0
+2    0
+3    0
+4    0
+5    4
+dtype: int64
+
+
+#Filtering out missing values
+DF_no_NaN = DF_obj.dropna() #It will drop all the rows or index that has NaN values
+DF_no_NaN
+Output:
+	0	        1	        2	        3	        4	      5
+0	0.870124	0.582277	0.278839	0.185911	0.4111	0.117376
+
+DF_no_NaN = DF_obj.dropna(axis=1) #It will drop all the columns that contain missing values
+DF_no_NaN
+Output:
+  1	        2	        3	        4
+0	0.582277	0.278839	0.185911	0.411100
+1	0.437611	0.556229	0.367080	0.402366
+2	0.585445	0.161985	0.520719	0.326051
+3	0.836375	0.481343	0.516502	0.383048
+4	0.559053	0.034450	0.719930	0.421004
+5	0.900274	0.669612	0.456069	0.289804
