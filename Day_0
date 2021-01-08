@@ -1,0 +1,94 @@
+Day 0: Python for Data Science (Python, R, Julia, Go)
+
+Python Libraries:
+For Advanced Data Analysis - NumPy, SciPy, pandas
+For Data Visualization - Matplotlib, Seaborn
+For Machine Learning - scikit-learn, TensorFlow, Keras
+
+
+# Series and DataFrame
+import numpy as np
+import pandas as pd
+
+from pandas import Series, DataFrame
+
+series_obj = Series(np.arange(6), index=['row 1', 'row 2', 'row 3', 'row 4', 'row 5', 'row 6'])
+series_obj
+Output: row 1    0
+        row 2    1
+        row 3    2
+        row 4    3
+        row 5    4
+        row 6    5
+        dtype: int32
+series_obj['row 6']
+Output: 5
+series_obj[[0,5]]
+Output: row 1    0
+        row 6    5
+        dtype: int32
+
+np.random.seed(25)
+DF_obj = DataFrame(np.random.rand(36).reshape((6,6)),
+                   index=['row1','row 2', 'row 3', 'row 4', 'row 5', 'row 6'],
+                   columns=['column 1', 'column 2', 'column 3', 'column 4', 'column 5', 'column 6'])
+DF_obj
+Output:
+
+      column 1	column 2	column 3	column 4	column 5	column 6
+row1	0.870124	0.582277	0.278839	0.185911	0.411100	0.117376
+row 2	0.684969	0.437611	0.556229	0.367080	0.402366	0.113041
+row 3	0.447031	0.585445	0.161985	0.520719	0.326051	0.699186
+row 4	0.366395	0.836375	0.481343	0.516502	0.383048	0.997541
+row 5	0.514244	0.559053	0.034450	0.719930	0.421004	0.436935
+row 6	0.281701	0.900274	0.669612	0.456069	0.289804	0.525819
+
+DF_obj.loc[['row 2', 'row 5'], ['column 5', 'column 2']]
+Output:
+	    column 5	column 2
+row 2	0.402366	0.437611
+row 5	0.421004	0.559053
+
+
+#Data Slicing
+series_obj['row 3': 'row 6']
+Output:
+row 3    2
+row 4    3
+row 5    4
+row 6    5
+dtype: int32
+
+
+#Comparing with Scalars
+DF_obj < 0.2
+Output:
+	    column 1	column 2	column 3	column 4	column 5	column 6
+row1	False	    False	    False	    True	    False	    True
+row 2	False	    False	    False	    False	    False	    True
+row 3	False	    False	    True	    False	    False	    False
+row 4	False	    False	    False	    False	    False	    False
+row 5	False	    False	    True	    False	    False	    False
+row 6	False	    False	    False	    False	    False	    False
+
+
+#Filtering with Scalars
+series_obj[series_obj > 2]
+Output:
+row 4    3
+row 5    4
+row 6    5
+dtype: int32
+
+
+#Setting values with scalars
+series_obj['row 1', 'row 2', 'row 4'] = 8
+series_obj
+Output:
+row 1    8
+row 2    8
+row 3    2
+row 4    8
+row 5    4
+row 6    5
+dtype: int32
