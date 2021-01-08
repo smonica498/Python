@@ -1,0 +1,61 @@
+#Day 1: Removing Duplicates
+
+import numpy as np
+import pandas as pd
+
+from pandas import Series, DataFrame
+DF_obj = DataFrame({'column 1':[1,1,2,2,3,3,3],
+                    'column 2' :['a','a','b','b','c','c','c'],
+                    'column 3' :['A','A','B','B','C','C','C']})
+DF_obj
+Output:
+	column 1	column 2	column 3
+0	1	        a	        A
+1	1	        a	        A
+2	2	        b	        B
+3	2	        b	        B
+4	3	        c	        C
+5	3	        c	        C
+6	3	        c	        C
+
+
+DF_obj.duplicated() #Gives True value if that row is the duplicate of the prev rows
+Output:
+0    False
+1     True
+2    False
+3     True
+4    False
+5     True
+6     True
+dtype: bool
+
+DF_obj.drop_duplicates() #Removes the duplicated rows
+Output:
+	column 1	column 2	column 3
+0	1	        a	        A
+2	2	        b	        B
+4	3	        c	        C
+
+
+DF_obj = DataFrame({'column 1':[1,1,2,2,3,3,3],
+                    'column 2' :['a','a','b','b','c','c','c'],
+                    'column 3' :['A','A','B','B','C','D','C']})
+DF_obj
+Output:
+	column 1	column 2	column 3
+0	1	        a	        A
+1	1	        a	        A
+2	2	        b	        B
+3	2	        b	        B
+4	3	        c	        C
+5	3	        c	        D
+6	3	        c	        C
+
+DF_obj.drop_duplicates(['column 3']) #Removes duplicates from column 3
+Output:
+	column 1	column 2	column 3
+0	1	        a	        A
+2	2	        b	        B
+4	3	        c	        C
+5 3         c         D
