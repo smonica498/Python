@@ -81,16 +81,16 @@ rcParams[]
 x=range(1,10)
 y=[1,2,3,4,0,4,3,2,1]
 fig=plt.figure()
-ax=fig.add_axes([0.1,0.1,1,1])
+ax=fig.add_axes([0.1,0.1,1,1]) #add_axes(*args, **kwargs)... ([left, bottom, width, height])
 ax.plot(x,y)
 #Limit and Ticks
 fig=plt.figure()
 ax=fig.add_axes([0.1,0.1,1,1])
 
-ax.set_xlim([1,9])
-ax.set_ylim([0,5])
+ax.set_xlim([1,9]) #(left,right) limits
+ax.set_ylim([0,5]) #(bottom,top) limits
 
-ax.set_xticks([0,1,2,4,5,6,8,9,10])
+ax.set_xticks([0,1,2,4,5,6,8,9,10]) #list of ticks
 ax.set_yticks([0,1,2,3,4,5])
 
 ax.plot(x,y)
