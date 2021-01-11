@@ -1,0 +1,180 @@
+Day 2:Data Visualization
+
+
+#Plot formatting
+import numpy as np
+import pandas as pd
+from pandas import Series, DataFrame
+import matplotlib.pyplot as plt
+from pylab import rcParams
+
+%matplotlib inline
+rcParams['figure.figsize']=5,4 #Plot size
+
+
+#Defining plot color
+x=range(1,10)
+y=[1,2,3,4,0.5,4,3,2,1]
+plt.bar(x,y)
+wide=[0.5,0.5,0.5,0.9,0.9,0.9,0.5,0.5,0.5]
+color=['salmon']
+plt.bar(x,y,width=wide,color=color,align='center') #alignment centred between intervals
+
+address = 'C:/Users/monic/Desktop/Ex_Files_Python_Data_Science_EssT_Pt_1/Data/mtcars.csv'
+cars = pd.read_csv(address)
+cars.columns = ['car_names', 'mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am', 'gear', 'carb']
+df=cars[['cyl','mpg','wt']]
+df.plot()
+color_theme=['darkblue','pink','black']
+df.plot(color=color_theme)
+
+color_theme=['#A9A9A9','#FFA07A','#B0EB06','#FFE4C4','#BDB76B'] #RGB Colors
+plt.pie (z, colors=color_theme)
+plt.show()
+
+
+#Customizing line styles
+x1=range(0,10)
+y1=[10,9,8,7,6,5,4,3,2,1]
+plt.plot(x,y)
+plt.plot(x1,y1)
+
+plt.plot(x,y,drawstyle='steps',lw=5) #Drawing style is steps, line width is 5
+plt.plot(x1,y1,ls='--',lw=10) #Custom line style
+
+
+#Setting plot markers
+plt.plot(x,y,marker='1',mew=20) #Marker and Marker width
+plt.plot(x1,y1,marker='+',mew=15)
+
+
+#labesl and annotations
+#Using the functional method
+x=range(1,10)
+y=[1,2,3,4,0.5,4,3,2,1]
+plt.bar(x,y)
+plt.xlabel('x-axis label')
+plt.ylabel('y-axis label')
+
+z=[1,2,3,4,5]
+veh_type=['b','m','s','c','v']
+plt.pie(z,labels=veh_type)
+plt.show()
+
+#Using object-oriented method
+rcParams['figure.figsize']=8,8
+address = 'C:/Users/monic/Desktop/Ex_Files_Python_Data_Science_EssT_Pt_1/Data/mtcars.csv'
+cars = pd.read_csv(address)
+cars.columns = ['car_names', 'mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am', 'gear', 'carb']
+mpg=cars.mpg
+fig=plt.figure()
+ax=fig.add_axes([0.1,0.1,1,1])
+mpg.plot()
+ax.set_xticks(range(32))
+ax.set_xticklabels(cars.car_names, rotation=60, fontsize='medium')
+ax.set_title('Miles per Gallon of cars in mtcars dataset')
+ax.set_xlabel('car names')
+ax.set_ylabel('miles per Gallon')
+
+
+#Adding a legend to plot
+#Using functional method
+plt.pie(z)
+plt.legend(veh_type, loc='best')
+plt.show()
+
+#Using object-oriented method
+rcParams['figure.figsize']=8,8
+address = 'C:/Users/monic/Desktop/Ex_Files_Python_Data_Science_EssT_Pt_1/Data/mtcars.csv'
+cars = pd.read_csv(address)
+cars.columns = ['car_names', 'mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am', 'gear', 'carb']
+mpg=cars.mpg
+fig=plt.figure()
+ax=fig.add_axes([0.1,0.1,1,1])
+mpg.plot()
+ax.set_xticks(range(32))
+ax.set_xticklabels(cars.car_names, rotation=90, fontsize='medium')
+ax.set_title('Miles per Gallon of cars in mtcars dataset')
+ax.set_xlabel('car names')
+ax.set_ylabel('miles per Gallon')
+ax.legend(loc='best')
+
+
+#Annotating plot
+rcParams['figure.figsize']=8,8
+address = 'C:/Users/monic/Desktop/Ex_Files_Python_Data_Science_EssT_Pt_1/Data/mtcars.csv'
+cars = pd.read_csv(address)
+cars.columns = ['car_names', 'mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am', 'gear', 'carb']
+mpg=cars.mpg
+fig=plt.figure()
+ax=fig.add_axes([0.1,0.1,1,1])
+mpg.plot()
+ax.set_xticks(range(32))
+ax.set_xticklabels(cars.car_names, rotation=90, fontsize='medium')
+ax.set_title('Miles per Gallon of cars in mtcars dataset')
+ax.set_xlabel('car names')
+ax.set_ylabel('miles per Gallon')
+ax.legend(loc='best')
+ax.set_ylim([0,45])
+ax.annotate('Toyota',xy=(19,33.9),xytext=(21,35),
+           arrowprops=dict(facecolor='blue',shrink=0.05))
+           
+
+#Time Series
+address = 'C:/Users/monic/Desktop/Ex_Files_Python_Data_Science_EssT_Pt_1/Data/Superstore-sales.csv'
+df=pd.read_csv(address,index_col='Order Date',encoding='cp1252',parse_dates=True) #index_col -> Column to use as row labels
+df.head()
+
+df['Order Quantity'].plot()
+
+df2=df.sample(n=100, random_state=25, axis=0)
+plt.xlabel('Order Date')
+plt.ylabel('Order Quantity')
+plt.title('Sales of superstore')
+df2['Order Quantity'].plot()
+
+
+#Statistical data graphics
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from pandas import Series, DataFrame
+from pandas.plotting import scatter_matrix
+from pylab import rcParams
+
+%matplotlib inline
+rcParams['figure.figsize']=5,4
+
+import seaborn as sb
+sb.set_style('whitegrid')
+
+#Histograms
+address = 'C:/Users/monic/Desktop/Ex_Files_Python_Data_Science_EssT_Pt_1/Data/mtcars.csv'
+cars=pd.read_csv(address)
+cars.columns=['car_names', 'mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am', 'gear', 'carb']
+cars.index=cars.car_names
+mpg=cars['mpg']
+mpg.plot(kind='hist')
+
+plt.hist(mpg)
+plt.plot()
+
+sb.distplot(mpg)
+
+#Scatterplot
+cars.plot(kind='scatter', x='hp', y='mpg', c=['darkblue'], s=100) #Color and size for scatterplot
+
+sb.regplot(x='hp', y='mpg', data=cars, scatter=True)
+
+#Scatterplot matrix
+sb.pairplot(cars)
+
+cars_subset=cars[['mpg','disp','hp','wt']]
+sb.pairplot(cars_subset)
+plt.show()
+
+#Box plot
+cars.boxplot(column='mpg', by='am')
+cars.boxplot(column='wt', by='am')
+
+sb.boxplot(x='am',y='mpg', data=cars,palette='hls')
