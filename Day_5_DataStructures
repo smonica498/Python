@@ -1,0 +1,16 @@
+//String Data Types - sequence of characters, "Hello" or 'Hello', + means concatenate, to convert numbers in a string into number using int(), preferably read data in using strings
+index in a string starting with int 0 using []
+eg. banana
+fruit = 'banana'
+letter = fruit[1]
+print(letter) #a
+x=3
+w=fruit[x-1]
+print(w) #n
+
+#len to give length of a string
+fruit='banana'
+print(len(fruit)) #6
+
+
+
