@@ -8,9 +8,39 @@ x=3
 w=fruit[x-1]
 print(w) #n
 
-#len to give length of a string
+#len function - to give length of a string
 fruit='banana'
 print(len(fruit)) #6
+
+#Looping through strings
+fruit = 'banana'
+index = 0
+while index < len(fruit):
+    letter = fruit[index]
+    print(index, letter)
+    index = index + 1
+
+#Using for loop
+fruit = 'banana'
+for letter in fruit:
+    print(letter)
+
+#Looping and counting
+word = 'banana'
+count = 0
+for letter in word:
+
+#Slicing strings [start:upto but not including]
+s = "Learning Python"
+print(s[0:8]) #Learning
+print(s[9:10]) #P
+print(s[9:15]) #Python
+print(s[9:20]) #Python
+print(s[:2]) #Le
+print(s[8:]) # Python
+print(s[:]) #Learning Python
+
+//Manipulating strings
 
 
 
