@@ -1,0 +1,150 @@
+Algorithms - set of rules or steps used to solve a problem
+Data Structures - particular way of organizing data in a computer
+
+List - collection - allows to put many values in a single variable
+days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat']
+days is a list of strings
+
+print(1, 2, 3, 'Mon', 'red', 4, [1, 2], [])
+#1 2 3 Mon red 4 [1, 2] []
+
+days sub 1 i.e. days[1]
+
+Lists are Mutable - we can change an element of a list using index operator
+Strings are immutable
+
+#len() to find the length of a list
+l = [1,2]
+len(l) #2
+
+#Range function returns a list
+print(range(4)) #range(0, 4)
+l = [1,1,2]
+print(range(len(l))) #range(0, 3)
+days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat']
+for i in days:
+    print('Day:', days)
+for i in range(len(days)):
+    d = days[i]
+    print('Days include:', d)
+Output:
+Day: ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat']
+Day: ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat']
+Day: ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat']
+Day: ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat']
+Day: ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat']
+Day: ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat']
+Day: ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat']
+Days include: Sun
+Days include: Mon
+Days include: Tues
+Days include: Wed
+Days include: Thurs
+Days include: Fri
+Days include: Sat
+
+
+//Manipulating lists
+
+#Concatenating strings using +
+a = [1,2,3]
+b = [4,5,6]
+c = a + b
+print(c) #[1, 2, 3, 4, 5, 6]
+
+#Slicing lists using str[start:upto but not including]
+a = [1,2,3, 4, 5, 6]
+print(a[0:3]) #[1, 2, 3]
+
+#List Methods
+x = list()
+type(x) #list
+dir(x)
+#['__add__',
+ '__class__',
+ '__contains__',
+ '__delattr__',
+ '__delitem__',
+ '__dir__',
+ '__doc__',
+ '__eq__',
+ '__format__',
+ '__ge__',
+ '__getattribute__',
+ '__getitem__',
+ '__gt__',
+ '__hash__',
+ '__iadd__',
+ '__imul__',
+ '__init__',
+ '__init_subclass__',
+ '__iter__',
+ '__le__',
+ '__len__',
+ '__lt__',
+ '__mul__',
+ '__ne__',
+ '__new__',
+ '__reduce__',
+ '__reduce_ex__',
+ '__repr__',
+ '__reversed__',
+ '__rmul__',
+ '__setattr__',
+ '__setitem__',
+ '__sizeof__',
+ '__str__',
+ '__subclasshook__',
+ 'append',
+ 'clear',
+ 'copy',
+ 'count',
+ 'extend',
+ 'index',
+ 'insert',
+ 'pop',
+ 'remove',
+ 'reverse',
+ 'sort']
+
+#Building a list
+l = list()
+l = list()
+l.append('book')
+l.append(1)
+print(l) #['book', 1]
+l.append('movie')
+print(l) #['book', 1, 'movie']
+
+#Is something a list?
+some = [1,2,3,4,5,6,7,8,9]
+9 in some #True
+15 in some #False
+20 not in some #True
+
+#Lists are in order and can be sorted using sort method
+days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat']
+days.sort()
+print(days) #['Fri', 'Mon', 'Sat', 'Sun', 'Thurs', 'Tues', 'Wed']
+print(days[0]) #Fri
+
+#Built-in functions and lists
+nums = [1,2,3,4,5,6,7,8,9,0]
+print(len(nums)) #10
+print(max(nums)) #9
+print(min(nums)) #0
+print(sum(nums)) #45
+print(sum(nums)/len(nums)) #4.5
+
+# Average of a list of input numbers
+numlist = list()
+while True:
+    inp = input('Enter a number:')
+    if inp == 'done' : break
+    value = float(inp)
+    numlist.append(value)
+average = sum(numlist)/len(numlist)
+print('Average is: ', average)
+
+
+//Lists and Strings
