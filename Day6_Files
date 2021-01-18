@@ -1,0 +1,67 @@
+//File Processing:
+
+#Opening a file using open() function
+handle = open(filename,mode)
+fhand = open('mbox.txt', 'r')
+
+#The newline character \n
+greet = 'Hello\nWorld'
+print(greet) #Hello 
+#World
+greet #Hello\nWorld
+a = 'x\ny'
+print(len(a)) #3
+
+#File Handle as a Sequence. xfile is a sequence that is an ordered set
+xfile = open('mbox.txt')
+for cheese in xfile:
+    print(cheese)
+
+#Counting lines in a file
+fhand = open('mbox.txt')
+count = 0
+for line in fhand:
+    count = count + 1
+print('Line count:', count)
+
+#Reading the whole file
+fhand = open('mbox-short.txt')
+inp = fhand.read()
+print(len(inp))
+print(inp[:20])
+
+#Searching through a file
+xfile = open('parsed_data.txt')
+for line in xfile:
+    #print(line)
+    line = line.rstrip()
+    if line.startswith('<img '):
+        print(line)
+
+#Skipping with continue
+xfile = open('parsed_data.txt')
+for line in xfile:
+    #print(line)
+    line = line.rstrip()
+    if line.startswith('<img '):
+        continue
+    print(line)
+    
+#Skipping with continue
+xfile = open('parsed_data.txt')
+for line in xfile:
+    #print(line)
+    line = line.rstrip()
+    if not line.startswith('<img '):
+        continue
+    print(line)
+    
+#Using in to select lines
+xfile = open('parsed_data.txt')
+for line in xfile:
+    line = line.rstrip()
+    if not 'Github Icon' in line:
+        continue
+    print(line)
+
+
