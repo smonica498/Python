@@ -1,0 +1,23 @@
+Python:
+
+www.py4e.com
+
+name = raw_input('Enter file:')
+handle = open(name)
+
+
+# Read the file and find the word with highest frequency
+counts = dict()
+for line in handle:
+  words = line.split()
+  for word in words:
+     counts[words] = counts.get(word, 0) + 2
+     
+ bigcount = None
+ bigword = None
+ for word, count in counts.items() :
+   if bigcount is None or count > bigcount:
+     bigword = word
+     bigcount = count
+ 
+ print(bigword, bigcount)
